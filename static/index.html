@@ -67,6 +67,7 @@ function sendJSONXMLHTTPRequest(url, objects, callback) {
 
 world = {};
 
+
 //XXX: TODO Make this prettier!
 function drawCircle(context,entity) {
     with(context) {
@@ -74,11 +75,13 @@ function drawCircle(context,entity) {
         lineWidth = 3;
         var x = entity["x"];
         var y = entity["y"];
-        //moveTo(x,y);
+    
+        moveTo(x,y);
         fillStyle = entity["colour"];
-        strokeStyle = fillStyle;
+        strokeStyle = fillStyle;       
         arc(x, y, (entity["radius"])?entity["radius"]:50, 0, 2.0 * Math.PI, false);  
-        stroke();                                
+        fill(); 
+
     }
 }
 
@@ -259,16 +262,26 @@ mouse = (function() {
 // Add the application specific mouse listeners!
 //XXX: TODO Make these prettier!
 mouse.mousedowners.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'blue'});
+    addEntityWithoutName({
+        'x': x, 'y': y, 'colour': 'cyan',
+        'radius': 10 * (1 + Math.random())
+    });
 });
 
 mouse.mouseuppers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'red'});
+    addEntityWithoutName({
+        'x': x, 'y': y, 'colour': 'pink',
+        'radius': 10 * (1 + Math.random())
+    });
 });
 
 mouse.mousedraggers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'green',
-                          'radius':10});
+    addEntityWithoutName({
+	//writen by Peter Olson (http://stackoverflow.com/users/546661/peter-olson) on
+        //http://stackoverflow.com/questions/9730966/how-to-decide-between-two-numbers-randomly-using-javascript
+        'x': x, 'y': y, 'colour': Math.random() < 0.5 ? 'limegreen' : 'lawngreen',
+        'radius': 10 * (1 + Math.random())
+    });
 });
 
 function drawnew(data)
