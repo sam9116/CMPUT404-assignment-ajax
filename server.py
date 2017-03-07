@@ -85,9 +85,7 @@ def hello():
 @app.route("/entity/<entity>", methods=['POST','PUT'])
 def update(entity):
     '''update the entities via this interface'''
-    requestpackage = flask_post_json()
-    for k,v in requestpackage.items():
-        myWorld.update(entity,k,v)
+    myWorld.set(entity,flask_post_json())
     return json.dumps(myWorld.get(entity),io),200
 
 @app.route("/world", methods=['POST','GET'])    
