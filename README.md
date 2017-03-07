@@ -1,3 +1,4 @@
+
 CMPUT404-assignment-ajax
 ==============================
 
@@ -17,6 +18,7 @@ certain Javascript code are from w3schools
 
 all python code from Stackoverflow are licensed under Creative Commons CC-BY-SA 3.0
 authors are credited in the .py files and in the .html files
+everything else is written by Sam Bao, licensed under Apache 2
 
 
 
