@@ -148,7 +148,7 @@ function getPosition(e) {
 
 function addEntity(entity, data) {
     world[entity] = data;
-    // (but should we?)
+    //drawNextFrame(); // (but should we?)
     //XXX: Send a XHTML Request that updates the entity you just  modified!
     sendJSONXMLHTTPRequest("http://127.0.0.1:5000/entity/" + String(entity), JSON.stringify(data), drawnew);
 }
@@ -276,21 +276,16 @@ function drawnew(data)
     drawCircle(context, data);
 }
 function update() {
-    //XXX: TODO Get the world from the webservice using a XMLHTTPRequest    
-    drawFrame();
+    //XXX: TODO Get the world from the webservice using a XMLHTTPRequest
     sendJSONXMLHTTPRequest("http://127.0.0.1:5000/world", null, newworld);
-    
-    drawNextFrame();
-   
+    drawFrame();
 }
 
 // 30 frames per second
 setInterval(update, 1000 / 30.0);
 
 function newworld(data) {
-    world = {};
     world = data;
-    
 }
 
 

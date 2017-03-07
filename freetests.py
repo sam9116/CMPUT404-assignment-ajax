@@ -58,6 +58,8 @@ class ServerTestCase(unittest.TestCase):
         r = self.app.put(('/entity/%s' % v),data=json.dumps(d))
         self.assertTrue(r.status_code == 200, "PUT Code not 200!")
         rd = json.loads(r.data)
+        print(rd)
+        print(d)
         for key in d:
             self.assertTrue(rd[key] == d[key], "KEY %s " % key)
         r = self.app.get(('/entity/%s' % v))
